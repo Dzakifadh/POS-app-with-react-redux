@@ -1,6 +1,9 @@
+import { useSelector } from 'react-redux'
 import styled, { ThemeProvider } from 'styled-components'
 import './App.css'
+import CartItem from './components/CartItem'
 import Header from './components/Header'
+import ProductCard from './components/ProductCard'
 import * as theme from './styled/theme'
 
 const Container = styled.div`
@@ -29,13 +32,20 @@ const CartContainer = styled.div`
   padding: 0.5rem 0.5rem;
 `
 function App() {
+  const products = useSelector((state) => state.product.products)
   return (
     <ThemeProvider theme={theme}>
       <Header />
       <Container>
         <MenuContainer>Menu</MenuContainer>
-        <ProductContainer>Product</ProductContainer>
-        <CartContainer>Cart</CartContainer>
+        <ProductContainer>
+          {products.map((product) => (
+            <ProductCard key={product.id} item={product} />
+          ))}
+        </ProductContainer>
+        <CartContainer>
+          <CartItem />
+        </CartContainer>
       </Container>
     </ThemeProvider>
   )
