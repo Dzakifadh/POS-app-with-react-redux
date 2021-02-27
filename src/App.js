@@ -3,6 +3,7 @@ import styled, { ThemeProvider } from 'styled-components'
 import './App.css'
 import CartItem from './components/CartItem'
 import Header from './components/Header'
+import ListMenu from './components/ListMenu'
 import ProductCard from './components/ProductCard'
 import * as theme from './styled/theme'
 
@@ -37,7 +38,9 @@ function App() {
     <ThemeProvider theme={theme}>
       <Header />
       <Container>
-        <MenuContainer>Menu</MenuContainer>
+        <MenuContainer>
+          <ListMenu />
+        </MenuContainer>
         <ProductContainer>
           {products.map((product) => (
             <ProductCard key={product.id} item={product} />
