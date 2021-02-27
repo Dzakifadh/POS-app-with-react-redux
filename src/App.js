@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux'
 import styled, { ThemeProvider } from 'styled-components'
 import './App.css'
+import CalculateBox from './components/CalculateBox'
 import CartItem from './components/CartItem'
 import Header from './components/Header'
 import ListMenu from './components/ListMenu'
@@ -48,6 +49,7 @@ function App() {
         </ProductContainer>
         <CartContainer>
           <CartItem />
+          <CalculateBox />
         </CartContainer>
       </Container>
     </ThemeProvider>
