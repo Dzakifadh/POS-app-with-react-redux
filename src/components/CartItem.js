@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Counter from './Counter'
+import { inc, dec } from '../store/actions/product'
+import { useDispatch } from 'react-redux'
 
 const Cart = styled.div`
   display: flex;
@@ -33,26 +35,35 @@ const Price = styled.div`
 
 const CartItem = ({ item }) => {
   const [count, setCount] = useState(1)
-  // const dispatch = useDispatch()
-  // const increment = id => {
-  //   setCount(count + 1)
-  //   dispatch(inc(id))
-  // }
-  // const decrement = id => {
-  //   setCount(count - 1)
-  //   if(count > 1) {
-  //     dispatch(dec(id))
-  //   }else if(count === 1){
-  //     dispatch(removeFromCart(id))
-  //   }
-  // }
+  const dispatch = useDispatch()
+  const increment = (id) => {
+    setCount(count + 1)
+    dispatch(inc(id))
+  }
+  const decrement = (id) => {
+    setCount(count - 1)
+    dispatch(dec(id))
+    // if(count > 1) {
+    //   dispatch(dec(id))
+    // }else if(count === 1){
+    //   dispatch(removeFromCart(id))
+    // }
+  }
   return (
     <Cart>
       <ItemName>{item.name}</ItemName>
       <CounterContainer>
-        <Counter />
+        <Counter
+          dec={() => {
+            decrement(item.id)
+          }}
+        />
         <CounterTotal>{count}</CounterTotal>
-        <Counter inc />
+        <Counter
+          inc={() => {
+            increment(item.id)
+          }}
+        />
       </CounterContainer>
       <Price>{item.price}</Price>
     </Cart>
