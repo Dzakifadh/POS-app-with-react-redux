@@ -47,43 +47,43 @@ const BtnBox = styled.div`
 
 const CalculateBox = () => {
   // const dispatch = useDispatch()
-  // const carts = useSelector(state => state.product.carts)
-  // const total = carts.reduce((totalPrice, current) => totalPrice + current.price, 0)
-  // const [pay, setPay] = useState("")
-  // const [change, setChange] = useState("")
-  // const handleChange = e => {
-  //   setPay(e.target.value)
-  // }
-  // const calculateChange = () => {
-  //   if(pay > total){
-  //     setChange(pay-total)
-  //   }
-  // }
+  const carts = useSelector((state) => state.product.carts)
+  const total = carts.reduce(
+    (totalPrice, current) => totalPrice + current.price,
+    0
+  )
+  const [pay, setPay] = useState('')
+  const [change, setChange] = useState('')
+  const handleChange = (e) => {
+    setPay(e.target.value)
+  }
+  const calculateChange = () => {
+    if (pay > total) {
+      setChange(pay - total)
+    }
+  }
   // const reset = () => {
   //   dispatch(resetCart())
-  //   setChange("")
-  //   setPay("")
+  //   setChange('')
+  //   setPay('')
   // }
   return (
     <Box>
       <Total>
         <h4>Total</h4>
-        {/* <p>{total}</p> */}
-        <p>234</p>
+        <p>{total}</p>
       </Total>
       <Pay>
         <p>Jumlah Bayar</p>
-        {/* <input type="number" value={pay} onChange={handleChange} /> */}
-        <input type='text' />
+        <input type='number' value={pay} onChange={handleChange} />
       </Pay>
       <Change>
         <p>Kembalian</p>
-        {/* <p>{change}</p> */}
-        <p>345.678</p>
+        <p>{change}</p>
       </Change>
       <BtnBox>
         <Button text='reset' />
-        <Button primary text='selesai' />
+        <Button primary text='selesai' action={calculateChange} />
       </BtnBox>
     </Box>
   )
