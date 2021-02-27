@@ -52,6 +52,11 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         carts: deCarts,
       }
+    case `REMOVE_FROM_CART`:
+      return {
+        ...state,
+        carts: state.carts.filter((item) => item.id !== payload),
+      }
     default:
       return state
   }
