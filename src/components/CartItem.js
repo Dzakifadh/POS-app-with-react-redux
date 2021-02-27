@@ -48,19 +48,13 @@ const CartItem = ({ item }) => {
   // }
   return (
     <Cart>
-      <ItemName>
-        {/* {item.name} */}
-        name
-      </ItemName>
+      <ItemName>{item.name}</ItemName>
       <CounterContainer>
         <Counter />
         <CounterTotal>{count}</CounterTotal>
         <Counter inc />
       </CounterContainer>
-      <Price>
-        {/* {item.price} */}
-        price
-      </Price>
+      <Price>{item.price}</Price>
     </Cart>
   )
 }
