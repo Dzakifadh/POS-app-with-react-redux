@@ -57,10 +57,12 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         carts: state.carts.filter((item) => item.id !== payload),
       }
+    case `RESET_CART`:
+      return {
+        ...state,
+        carts: [],
+      }
     default:
       return state
   }
 }
-/* 
-Aku mau saran, itu uangnya kalo pada ngga keberatan di infaq-in atau donasi-in aja gpp
-*/

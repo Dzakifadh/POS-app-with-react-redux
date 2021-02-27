@@ -47,11 +47,6 @@ const CartItem = ({ item }) => {
     } else if (count === 1) {
       dispatch(removeFromCart(id))
     }
-    // if(count > 1) {
-    //   dispatch(dec(id))
-    // }else if(count === 1){
-    //   dispatch(removeFromCart(id))
-    // }
   }
   return (
     <Cart>
